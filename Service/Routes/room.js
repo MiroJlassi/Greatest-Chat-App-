@@ -5,8 +5,7 @@ const router = express.Router();
 
 router.post("/new-room", controller.createRoom);
 router.get("/rooms", controller.displayRooms);
-router.post("/:roomCode/add-message", controller.addMessageToRoom);
-
-
+router.get("/messages/:roomCode", controller.getMessages);
+router.post("/message/:roomCode", controller.sendMessage);
 
 export default router;
