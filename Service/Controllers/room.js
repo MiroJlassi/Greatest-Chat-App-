@@ -17,6 +17,22 @@ const createRoom = async (req, res) => {
     }
 };
 
+const joinRoom = async (req, res) => {
+    try {
+        const { roomCode } = req.body;
+        const rooms = req.rooms;
+
+        if (!rooms.has(roomCode)) {
+            return res.status(400).json({ message: "no room exists" });
+        }
+        return res.status(201).json({ message: "Room joined", roomCode });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json("ERROR: Cannot create room");
+    }
+};
+
+
 const displayRooms = async (req, res) => {
     try {
         const rooms = req.rooms;
@@ -78,6 +94,7 @@ const sendMessage = async (req, res) => {
 
 export default {
     createRoom,
+    joinRoom,
     displayRooms,
     getMessages,
     sendMessage,

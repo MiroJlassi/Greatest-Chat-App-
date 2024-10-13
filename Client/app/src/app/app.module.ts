@@ -8,13 +8,15 @@ import { CreateRoomComponent } from './create-room/create-room.component';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { ChatComponent } from './chat/chat.component';
+import { JoinRoomComponent } from './join-room/join-room.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateRoomComponent,
     HomeComponent,
-    ChatComponent
+    ChatComponent,
+    JoinRoomComponent
   ],
   imports: [
     BrowserModule,

@@ -1,28 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ChatService } from '../services/chat.service'; // Update with the actual service path
-
+import { ChatService } from '../services/chat.service';
+import { RoomManagerService } from '../services/room-manager.service'
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit {
-  roomCode = 'room1'; // Example roomCode
+  roomCode = '';
   messages: string[] = [];
   newMessage = '';
 
-  constructor(private chatService: ChatService) { }
+  constructor(private chatService: ChatService, private roomManager: RoomManagerService) { }
 
   ngOnInit(): void {
     this.loadMessages();
-    this.startPolling();
-  }
-
-  startPolling(): void {
-    setInterval(() => {
-      this.loadMessages();
-    }, 100);
+    this.roomCode = this.roomManager.roomCode;
   }
 
   loadMessages(): void {
