@@ -1,0 +1,9 @@
+<div>
+  <h1>Room: {{ roomCode }}</h1>
+  <div *ngFor="let message of messages">
+    <p>{{ message }}</p>
+  </div>
+
+  <input [(ngModel)]="newMessage" placeholder="Type your message" />
+  <button (click)="sendMessage()">Send</button>
+</div>
